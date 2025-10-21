@@ -10,11 +10,13 @@ module.exports = {
     scheme: "miapp",
     userInterfaceStyle: "light",
     newArchEnabled: true,
+
     splash: {
       image: "./assets/splash-icon.png",
       resizeMode: "contain",
       backgroundColor: "#ffffff",
     },
+
     ios: {
       supportsTablet: true,
       infoPlist: {
@@ -22,6 +24,7 @@ module.exports = {
           "RutaFit usa tu ubicación para mostrar mapas y eventos cerca de ti.",
       },
     },
+
     android: {
       package: "cl.rutafit.app",
       adaptiveIcon: {
@@ -33,11 +36,16 @@ module.exports = {
       permissions: ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
       config: {
         googleMaps: {
-          apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_KEY, // 👈 misma var
+          apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_KEY,
         },
       },
     },
-    web: { favicon: "./assets/favicon.png", bundler: "metro" },
+
+    web: {
+      favicon: "./assets/favicon.png",
+      bundler: "metro",
+    },
+
     plugins: [
       "expo-router",
       [
@@ -48,7 +56,12 @@ module.exports = {
         },
       ],
     ],
+
+    // 👇 Aquí va TODO lo accesible en runtime, incluido el ID de EAS
     extra: {
+      eas: {
+        projectId: "0cfd2ed9-5f2f-4808-8e17-25d6dc48b786",
+      },
       EXPO_PUBLIC_FB_API_KEY: process.env.EXPO_PUBLIC_FB_API_KEY,
       EXPO_PUBLIC_FB_AUTH_DOMAIN: process.env.EXPO_PUBLIC_FB_AUTH_DOMAIN,
       EXPO_PUBLIC_FB_PROJECT_ID: process.env.EXPO_PUBLIC_FB_PROJECT_ID,
@@ -56,9 +69,7 @@ module.exports = {
       EXPO_PUBLIC_FB_MESSAGING_SENDER_ID:
         process.env.EXPO_PUBLIC_FB_MESSAGING_SENDER_ID,
       EXPO_PUBLIC_FB_APP_ID: process.env.EXPO_PUBLIC_FB_APP_ID,
-    },
-    eas: {
-      projectId: "0cfd2ed9-5f2f-4808-8e17-25d6dc48b786",
+      EXPO_PUBLIC_GOOGLE_MAPS_KEY: process.env.EXPO_PUBLIC_GOOGLE_MAPS_KEY,
     },
   },
 };
